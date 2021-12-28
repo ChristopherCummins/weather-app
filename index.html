@@ -11,20 +11,60 @@
 <body>
     <div class = "topContainer">
         <div class = "leftDescriptionBox">
-            <div class = "descriptionText">Current Description</div>
-            <div class = "cityName">London</div>
+            <div class = "descriptionText">Overcast Clouds</div>
+            <div class = "cityName">New York</div>
             <div class = "temperature">51&#176;</div>
+            <div class = "highLowBox">
+                <div class = "todaysLow">Low: 48&#176;</div>
+                <div class = "todaysHigh">High: 53&#176;</div>
+            </div>
             <input type="checkbox" class = "toggle">
             <div class = "todayMainIconContainer">
-                <img src = "icon.png" class = "todayMainIcon">
+                <div class = "rightIcon"><img src = "cloudy.svg" class = "filterSVG" height = "100" width = "100"/> </div>
             </div>
             <div class = "searchContainer">
                 <form id = "searchForm" onsubmit="return false">
                     <input id = "searchInput" type = "text" placeholder = "Search Location...">
-                    <button type = "submit" onclick = "displayNewWeatherData()" id = "searchBtn">Search</button>
+                    <button type = "submit" onclick = "displayNewWeatherData()" id = "searchBtn">[ ]</button>
                 </form>
             </div>
-
+        </div>
+        <div class = "rightDescriptionBox">
+            <div class = "rightCategory">
+                <div class = "rightIcon"><img src = "cloudy.svg" class = "filterSVG" height = "50" width = "50"/> </div>
+                <div class = "rightInnerBox">
+                    <div class = "rightHeading">Feels Like</div>
+                    <div class = "rightDescription">52&#176;</div>
+                </div>
+            </div>
+            <div class = "rightCategory">
+                <div class = "rightIcon"><img src = "cloudy.svg" class = "filterSVG" height = "50" width = "50"/> </div>
+                <div class = "rightInnerBox">
+                    <div class = "rightHeading">Humidity</div>
+                    <div class = "rightDescription">62 %</div>
+                </div>
+            </div>
+            <div class = "rightCategory">
+                <div class = "rightIcon"><img src = "cloudy.svg" class = "filterSVG" height = "50" width = "50"/> </div>
+                <div class = "rightInnerBox">
+                    <div class = "rightHeading">Chance of Rain</div>
+                    <div class = "rightDescription">7 %</div>
+                </div>
+            </div>
+            <div class = "rightCategory">
+                <div class = "rightIcon"><img src = "cloudy.svg" class = "filterSVG" height = "50" width = "50"/> </div>
+                <div class = "rightInnerBox">
+                    <div class = "rightHeading">Time of Sunset</div>
+                    <div class = "rightDescription">4:32 pm</div>
+                </div>
+            </div>
+            <div class = "rightCategory">
+                <div class = "rightIcon"><img src = "cloudy.svg" class = "filterSVG" height = "50" width = "50"/> </div>
+                <div class = "rightInnerBox">
+                    <div class = "rightHeading">Phase of Moon</div>
+                    <div class = "rightDescription">New Moon</div>
+                </div>
+            </div>
         </div>
     </div>
 
