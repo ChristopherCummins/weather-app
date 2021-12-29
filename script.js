@@ -45,21 +45,67 @@ async function displayNewWeatherData() {
 
 
 async function parseWeatherData() {
-    let domCurrentTemp = document.getElementById("currentTemp");
+    const weatherData = await displayNewWeatherData();
 
-    const weatherData = await getWeatherData();
-    let currentTemp = weatherData.current.temp;
-    let currentFeelsLike = weatherData.current.feels_like;
-    let currentHumidity = weatherData.current.humidity;
-    let todaysLow = weatherData.daily[0].temp.min;
-    let todaysHigh = weatherData.daily[0].temp.max;
-    let todaysSunset = new Date (weatherData.current.sunset).toLocaleTimeString("en-US");
+    let domCurrentTemp = document.getElementsByClassName("temperature")[0];
+    let domCurrentFeelsLike = document.getElementsByClassName("rightDescription")[0];
+    let domCurrentHumidity = document.getElementsByClassName("rightDescription")[1];
+    let domTodaysLow = document.getElementsByClassName("todaysLow");
+    let domTodaysHigh = document.getElementsByClassName("todaysHigh");
+    let domChanceOfRain = document.getElementsByClassName("rightDescription")[2];
+    let domPhaseOfMoon = document.getElementsByClassName("rightDescription")[4];
+
+    let currentTemp = Math.round(weatherData.current.temp);
+    let currentFeelsLike = Math.round(weatherData.current.feels_like);
+    let currentHumidity = Math.round(weatherData.current.humidity);
+    let todaysLow = Math.round(weatherData.daily[0].temp.min);
+    let todaysHigh = Math.round(weatherData.daily[0].temp.max);
+    let chanceOfRain = ((weatherData.daily[0].pop) * 100);
+    let phaseOfMoon = (weatherData.daily[0].moon_phase);
+    //let todaysSunset = new Date (weatherData.current.sunset).toLocaleTimeString("en-US");
+
+    domCurrentTemp.innerHTML = currentTemp + "&#176;";
+    domCurrentFeelsLike.innerHTML = currentFeelsLike + "&#176;";
+    domCurrentHumidity.innerHTML = currentHumidity + " %"
+    domTodaysLow.innerHTML = todaysLow + "&#176;";
+    domTodaysHigh.innerHTML = todaysHigh + "&#176;";
+    domChanceOfRain.innerHTML = chanceOfRain + " %";
+    domPhaseOfMoon.innerHTML = getMoonPhase(phaseOfMoon);
 
     console.log("Current Temp: " + currentTemp, 
                 "Current Humidity: " + currentHumidity, 
                 "Todays' Low: " + todaysLow, 
-                "Today's High: " + todaysHigh);
+                "Today's High: " + todaysHigh,
+                "Phase of Moon: " + phaseOfMoon);
 }
 
-parseWeatherData();
+
+function getMoonPhase(number) {
+        if ((number == 0) || (number == 1)) {
+            return "New Moon";
+        }
+        else if (number < .25) {
+            return "Waxing Crescent";
+        }
+        else if (number == .25) {
+            return "First Quarter";
+        }
+        else if ((number > .25) && (number < .5)) {
+            return "Waxing Gibbous";
+        }
+        else if (number == .5) {
+            return "Full Moon";
+        }
+        else if ((number > .5) && (number < .75)) {
+            return "Waning Gibbous";
+        }
+        else if (number == .75) {
+            return "Last Quarter";
+        }
+        else if ((number > .75) && (number < 1)) {
+            return "Waning Crescent";
+        }
+}
+
+getWeatherData();
 
