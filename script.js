@@ -27,6 +27,7 @@ async function parseWeatherData() {
     const cityData = await(getCityInfo(readLocation()));
     const weatherData = await getWeatherData(cityData);
 
+    let domDescription = document.getElementsByClassName("descriptionText")[0];
     let domCityName = document.getElementsByClassName("cityName")[0];
     let domCurrentTemp = document.getElementsByClassName("temperature")[0];
     let domTodaysLow = document.getElementsByClassName("todaysLow")[0];
@@ -37,6 +38,7 @@ async function parseWeatherData() {
     let domSunsetTime = document.getElementsByClassName("rightDescription")[3];
     let domPhaseOfMoon = document.getElementsByClassName("rightDescription")[4];
 
+    let description = weatherData.current.weather[0].main;
     let cityName = cityData[0].name;
     let currentTemp = Math.round(weatherData.current.temp);
     let todaysLow = Math.round(weatherData.daily[0].temp.min);
@@ -48,7 +50,7 @@ async function parseWeatherData() {
     let phaseOfMoon = (weatherData.daily[0].moon_phase);
     let currentDate = weatherData.current.dt;
 
-
+    domDescription.innerHTML = description;
     domCityName.innerHTML = cityName;
     domCurrentTemp.innerHTML = currentTemp + "&#176;";
     domTodaysLow.innerHTML = "Low: " + todaysLow + "&#176;";
@@ -59,14 +61,8 @@ async function parseWeatherData() {
     domSunsetTime.innerHTML = getSunsetTime(sunsetTime);
     domPhaseOfMoon.innerHTML = getMoonPhase(phaseOfMoon);
 
-    console.log(getCurrentDayofWeek(currentDate));
-    console.log(convertDayofWeek(getCurrentDayofWeek(currentDate)));
+    fillWeeklyDaysOfWeek(currentDate);
 
-    console.log("Current Temp: " + currentTemp, 
-                "Current Humidity: " + currentHumidity, 
-                "Todays' Low: " + todaysLow, 
-                "Today's High: " + todaysHigh,
-                "Phase of Moon: " + phaseOfMoon);
 }
 
 function getMoonPhase(number) {
@@ -113,13 +109,26 @@ function getCurrentDayofWeek(unixTime) {
     return currentDayOfWeek;
 }
 
-function convertDayofWeek(currentDayOfWeek) {
+function convertDayofWeek(numberDayOfWeek) {
     const weekDays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-    let day = weekDays[currentDayOfWeek];
-    console.log(day);
+    let day = weekDays[numberDayOfWeek];
     return day;
 }
 
-function fillWeeklyDaysOfWeek(weatherData) {
+function fillWeeklyDaysOfWeek(unixTime) {
     let domDaysOfWeek = document.getElementsByClassName("date");
+    let dayOfWeek = getCurrentDayofWeek(unixTime);
+
+    for (i = 0; i < domDaysOfWeek.length; i++) {
+        domDaysOfWeek[i].innerHTML = dayOfWeek + 1;
+        dayOfWeek += 1;
+    }
+    for (i = 0; i <domDaysOfWeek.length; i++) {
+        if (domDaysOfWeek[i].innerHTML >= 7) {
+            domDaysOfWeek[i].innerHTML = domDaysOfWeek[i].innerHTML - 7;
+        }
+    }
+    for (i = 0; i <domDaysOfWeek.length; i++) {
+        domDaysOfWeek[i].innerHTML = convertDayofWeek(domDaysOfWeek[i].innerHTML);
+    }
 }
