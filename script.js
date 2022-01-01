@@ -114,7 +114,7 @@ function fillMoonPhaseIcon(phaseOfMoon) {
     let moonPhaseIcon = document.getElementById("moonPhaseIcon");
     let moonPhase = getMoonPhase(phaseOfMoon);
     
-    moonPhaseIcon.src = "/assets/" + moonPhase + ".png";
+    moonPhaseIcon.src = "assets/" + moonPhase + ".png";
 }
 
 function fillCurrentForecastIcon(SVGString) {
