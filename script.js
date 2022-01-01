@@ -1,3 +1,4 @@
+
 function readLocation() {
     let searchInput = document.getElementById("searchInput").value;
     return searchInput;
@@ -24,6 +25,7 @@ async function getWeatherData(cityData) {
 }
 
 async function parseWeatherData() {
+    try {   
     const cityData = await(getCityInfo(readLocation()));
     const weatherData = await getWeatherData(cityData);
 
@@ -37,6 +39,7 @@ async function parseWeatherData() {
     let domChanceOfRain = document.getElementsByClassName("rightDescription")[2];
     let domSunsetTime = document.getElementsByClassName("rightDescription")[3];
     let domPhaseOfMoon = document.getElementsByClassName("rightDescription")[4];
+    let domInput = document.getElementById("searchInput");
 
     let description = capitalize(weatherData.current.weather[0].description);
     let cityName = cityData[0].name;
@@ -70,7 +73,14 @@ async function parseWeatherData() {
     fillWeeklyLows(weeklyLows);
     fillCurrentForecastIcon(getForecastIconSVGString(currentForecastIcon));
     fillWeeklyForecastIcons(weeklyIcons)
-    console.log(currentForecastIcon);
+    document.getElementById("searchForm").reset();
+    }
+    catch(e) {
+        if (e instanceof TypeError) {
+            alert("Enter a valid city or country");
+            document.getElementById("searchForm").reset();
+        }
+    }
 }
 
 function getMoonPhase(number) {
@@ -115,16 +125,16 @@ function fillCurrentForecastIcon(SVGString) {
     iconContainer.append("svg:image")
     .attr('class', 'filterSVG')
     .attr('id', 'mainIcon')
-    .attr('width', 150)
-    .attr('height', 150)
+    .attr('width', 130)
+    .attr('height', 130)
     // .attr('x', 5)
-    .attr('y', -10)
+    .attr('y', 10)
     .attr('href', 'data:image/svg+xml;base64, ' + SVGString)
 }
 
 function getForecastIconSVGString(currentForecastIcon) {
     let encodedValue = ""
-    if (currentForecastIcon == "01d") {
+    if ((currentForecastIcon == "01d") || (currentForecastIcon == "01n")){
         encodedValue = "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgZmlsbD0iI2Y1ZjVmNSIgdmlld0JveD0iMyAzIDI2IDI2Ij4KPHRpdGxlPnN1bjwvdGl0bGU+CjxwYXRoIGQ9Ik0xNiA5Yy0zLjg1OSAwLTcgMy4xNDEtNyA3czMuMTQxIDcgNyA3IDctMy4xNDEgNy03YzAtMy44NTktMy4xNDEtNy03LTd6TTE2IDIxYy0yLjc2MiAwLTUtMi4yMzgtNS01czIuMjM4LTUgNS01IDUgMi4yMzggNSA1LTIuMjM4IDUtNSA1ek0xNiA3YzAuNTUyIDAgMS0wLjQ0OCAxLTF2LTJjMC0wLjU1Mi0wLjQ0OC0xLTEtMXMtMSAwLjQ0OC0xIDF2MmMwIDAuNTUyIDAuNDQ4IDEgMSAxek0xNiAyNWMtMC41NTIgMC0xIDAuNDQ4LTEgMXYyYzAgMC41NTIgMC40NDggMSAxIDFzMS0wLjQ0OCAxLTF2LTJjMC0wLjU1Mi0wLjQ0OC0xLTEtMXpNMjMuNzc3IDkuNjM1bDEuNDE0LTEuNDE0YzAuMzkxLTAuMzkxIDAuMzkxLTEuMDIzIDAtMS40MTRzLTEuMDIzLTAuMzkxLTEuNDE0IDBsLTEuNDE0IDEuNDE0Yy0wLjM5MSAwLjM5MS0wLjM5MSAxLjAyMyAwIDEuNDE0czEuMDIzIDAuMzkxIDEuNDE0IDB6TTguMjIzIDIyLjM2NWwtMS40MTQgMS40MTRjLTAuMzkxIDAuMzkxLTAuMzkxIDEuMDIzIDAgMS40MTRzMS4wMjMgMC4zOTEgMS40MTQgMGwxLjQxNC0xLjQxNGMwLjM5MS0wLjM5MiAwLjM5MS0xLjAyMyAwLTEuNDE0cy0xLjAyMy0wLjM5Mi0xLjQxNCAwek03IDE2YzAtMC41NTItMC40NDgtMS0xLTFoLTJjLTAuNTUyIDAtMSAwLjQ0OC0xIDFzMC40NDggMSAxIDFoMmMwLjU1MiAwIDEtMC40NDggMS0xek0yOCAxNWgtMmMtMC41NTIgMC0xIDAuNDQ4LTEgMXMwLjQ0OCAxIDEgMWgyYzAuNTUyIDAgMS0wLjQ0OCAxLTFzLTAuNDQ4LTEtMS0xek04LjIyMSA5LjYzNWMwLjM5MSAwLjM5MSAxLjAyNCAwLjM5MSAxLjQxNCAwczAuMzkxLTEuMDIzIDAtMS40MTRsLTEuNDE0LTEuNDE0Yy0wLjM5MS0wLjM5MS0xLjAyMy0wLjM5MS0xLjQxNCAwcy0wLjM5MSAxLjAyMyAwIDEuNDE0bDEuNDE0IDEuNDE0ek0yMy43NzkgMjIuMzYzYy0wLjM5Mi0wLjM5MS0xLjAyMy0wLjM5MS0xLjQxNCAwcy0wLjM5MiAxLjAyMyAwIDEuNDE0bDEuNDE0IDEuNDE0YzAuMzkxIDAuMzkxIDEuMDIzIDAuMzkxIDEuNDE0IDBzMC4zOTEtMS4wMjMgMC0xLjQxNGwtMS40MTQtMS40MTR6Ii8+Cjwvc3ZnPg==";
         return encodedValue;
     }
@@ -184,9 +194,12 @@ function fillWeeklyForecastIcons(weeklyIcons) {
 }
 
 function getSunsetTime(unixTime) {
-    let date = new Date(unixTime*1000);
+    let date = new Date(unixTime * 1000);
     let hours = date.getHours();
     let minutes = date.getMinutes();
+    if (minutes < 10) {
+        minutes = "0" + minutes;
+    }
     if (hours > 12) {
         hours = hours - 12;
     }
@@ -296,7 +309,55 @@ function capitalize(words) {
     fillWeeklyLows(weeklyLows);
     fillCurrentForecastIcon(getForecastIconSVGString(currentForecastIcon));
     fillWeeklyForecastIcons(weeklyIcons)
+    console.log(sunsetTime);
     console.log(currentForecastIcon);
 }
 
 renderDefaultData();
+
+
+function changeDomUnits() {
+    let allTemps = document.getElementsByClassName("temp");
+    let mainLowTemp = document.getElementsByClassName("todaysLow")[0];
+    let mainHighTemp = document.getElementsByClassName("todaysHigh")[0];
+
+    for (i = 0; i < allTemps.length; i ++) {
+        let originalTemp = allTemps[i].innerHTML.replace(/[^0-9.-]/g, '');
+        if (!converted) {
+            let newTemp = convertImperialToMetric(originalTemp);
+            allTemps[i].innerHTML= newTemp + "&#176;";
+        }
+        else {
+            let newTemp = convertMetricToImperial(originalTemp);
+            allTemps[i].innerHTML= newTemp + "&#176;";
+        }
+    }
+    lowTemp = mainLowTemp.innerHTML;
+    mainLowTemp.innerHTML = "Low: " + lowTemp;
+    highTemp = mainHighTemp.innerHTML;
+    mainHighTemp.innerHTML = "Low: " + highTemp;
+}
+
+function convertMetricToImperial(temp) {
+    temp = Math.round((temp * (9/5) + 32));
+    return temp;
+}
+
+function convertImperialToMetric(temp) {
+    temp = Math.round((temp - 32) * (5/9));
+    return temp;
+}
+
+let checkbox = document.querySelector("input[type='checkbox']");
+let converted = false;
+
+checkbox.addEventListener("click", () => {
+        changeDomUnits();
+        if (! converted) {
+            converted = true;
+        }
+        else {
+            converted = false;
+        }
+        console.log("hi");
+    });

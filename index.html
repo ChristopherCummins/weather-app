@@ -13,19 +13,19 @@
         <div class = "leftDescriptionBox">
             <div class = "descriptionText">Overcast Clouds</div>
             <div class = "cityName">New York</div>
-            <div class = "temperature">51&#176;</div>
+            <div class = "temperature temp">51&#176;</div>
             <div class = "highLowBox">
-                <div class = "todaysLow">Low: 48&#176;</div>
-                <div class = "todaysHigh">High: 53&#176;</div>
+                <div class = "todaysLow temp">Low: 48&#176;</div>
+                <div class = "todaysHigh temp">High: 53&#176;</div>
             </div>
-            <input type="checkbox" class = "toggle">
+            <input type="checkbox" name = "checkbox" class = "toggle">
             <div class = "todayMainIconContainer">
                 <svg class = "rightIcon" id = "iconContainer"></svg>
             </div>
             <div class = "searchContainer">
                 <form id = "searchForm" onsubmit="return false">
-                    <input id = "searchInput" type = "text" placeholder = "Search Location...       ">
-                    <button type = "submit" onclick = "parseWeatherData()" id = "searchBtn"><img src="/assets/search.svg"></button>
+                    <input id = "searchInput" name ="search" type = "text" placeholder = "Search...       ">
+                    <button type = "submit" onclick = "parseWeatherData()" id = "searchBtn"><img src="assets/search.svg"></button>
                 </form>
             </div>
         </div>
@@ -34,7 +34,7 @@
                 <div class = "rightIcon"><img src = "/assets/thermo.svg" class = "filterSVG" height = "35" width = "35"/> </div>
                 <div class = "rightInnerBox">
                     <div class = "rightHeading">Feels Like</div>
-                    <div class = "rightDescription">52&#176;</div>
+                    <div class = "rightDescription temp">52&#176;</div>
                 </div>
             </div>
             <div class = "rightCategory">
@@ -68,12 +68,16 @@
         </div>
     </div>
     <div class = "bottomContainer">
+        <div class = "weeklyDisplayContainer"></div>
+            <div class = "leftLine"><hr></div>
+            <div class = "weeklyDisplayName">The Week Ahead</div>
+            <div class = "rightLine"><hr></div>
         <div class = "weeklyContainer">
             <div class = "day">
                 <div class = "date">Monday</div>
                 <div class = "weeklyHighLowBox">
-                    <div class = "high">53&#176;</div>
-                    <div class = "low">42&#176;</div>
+                    <div class = "high temp">53&#176;</div>
+                    <div class = "low temp">42&#176;</div>
                 </div>
                 <div class = "weeklyIconContainer">
                     <svg class = "weeklyIcon" id = "iconContainer"></svg>
@@ -82,8 +86,8 @@
             <div class = "day">
                 <div class = "date">Tuesday</div>
                 <div class = "weeklyHighLowBox">
-                    <div class = "high">53&#176;</div>
-                    <div class = "low">42&#176;</div>
+                    <div class = "high temp">53&#176;</div>
+                    <div class = "low temp">42&#176;</div>
                 </div>
                 <div class = "weeklyIconContainer">
                     <svg class = "weeklyIcon" id = "iconContainer"></svg>
@@ -92,8 +96,8 @@
             <div class = "day">
                 <div class = "date">Wednesday</div>
                 <div class = "weeklyHighLowBox">
-                    <div class = "high">53&#176;</div>
-                    <div class = "low">42&#176;</div>
+                    <div class = "high temp">53&#176;</div>
+                    <div class = "low temp">42&#176;</div>
                 </div>
                 <div class = "weeklyIconContainer">
                     <svg class = "weeklyIcon" id = "iconContainer"></svg>
@@ -102,8 +106,8 @@
             <div class = "day">
                 <div class = "date">Thursday</div>
                 <div class = "weeklyHighLowBox">
-                    <div class = "high">53&#176;</div>
-                    <div class = "low">42&#176;</div>
+                    <div class = "high temp">53&#176;</div>
+                    <div class = "low temp">42&#176;</div>
                 </div>
                 <div class = "weeklyIconContainer">
                     <svg class = "weeklyIcon" id = "iconContainer"></svg>
@@ -112,8 +116,8 @@
             <div class = "day">
                 <div class = "date">Friday</div>
                 <div class = "weeklyHighLowBox">
-                    <div class = "high">53&#176;</div>
-                    <div class = "low">42&#176;</div>
+                    <div class = "high temp">53&#176;</div>
+                    <div class = "low temp">42&#176;</div>
                 </div>
                 <div class = "weeklyIconContainer">
                     <svg class = "weeklyIcon" id = "iconContainer"></svg>
@@ -122,8 +126,8 @@
             <div class = "day">
                 <div class = "date">Saturday</div>
                 <div class = "weeklyHighLowBox">
-                    <div class = "high">53&#176;</div>
-                    <div class = "low">42&#176;</div>
+                    <div class = "high temp">53&#176;</div>
+                    <div class = "low temp">42&#176;</div>
                 </div>
                 <div class = "weeklyIconContainer">
                     <svg class = "weeklyIcon" id = "iconContainer"></svg>
@@ -132,8 +136,8 @@
             <div class = "day">
                 <div class = "date">Sunday</div>
                 <div class = "weeklyHighLowBox">
-                    <div class = "high">53&#176;</div>
-                    <div class = "low">42&#176;</div>
+                    <div class = "high temp">53&#176;</div>
+                    <div class = "low temp">42&#176;</div>
                 </div>
                 <div class = "weeklyIconContainer">
                     <svg class = "weeklyIcon" id = "iconContainer"></svg>

@@ -1,3 +1,12 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 .topContainer {
   display: flex;
   flex-direction: row;
@@ -91,18 +100,62 @@
   filter: brightness(0) saturate(100%) invert(0%) sepia(10%) saturate(7462%) hue-rotate(130deg) brightness(85%) contrast(108%);
 }
 
+.bottomContainer {
+  display: flex;
+  flex-direction: column;
+  padding-top: 2%;
+  width: 100%;
+}
+
+.weeklyDisplayContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.weeklyDisplayName {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 20px;
+  align-self: center;
+}
+
+hr {
+  border: 1px solid black;
+  width: 100%;
+}
+
 
 .weeklyContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
+}
+
+@media (min-width:600px) {
+  .weeklyContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding-left: 3%;
+  }
 }
 
 .day {
   display: flex;
   width: 80%;
   max-height: 5rem;
+}
+
+@media (min-width:600px) {
+  .day {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+  }
 }
 
 .date {
@@ -113,28 +166,68 @@
   display: block;
 }
 
+@media (min-width:600px) {
+  .date {
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-right: auto;
+    display: block;
+  }
+}
+
 .weeklyHighLowBox {
   display: flex;
   flex-direction: column;
   margin-right: 4rem;
 }
 
+@media (min-width:600px) {
+  .weeklyHighLowBox {
+    display: block;
+    margin-right: auto;
+  }
+}
+
+
 .high {
   font-size: 2rem;
   margin-top: 1rem;
   display: block;
+  margin-left: auto;
 }
 
 .low {
   font-size: 1.3rem;
   display: block;
+  margin-left: auto;
+}
+
+@media (min-width:600px) {
+  .high {
+    font-size: 2rem;
+    margin-top: 1rem;
+    display: block;
+    margin-right: auto;
+  }
+  
+  .low {
+    font-size: 1.3rem;
+    display: block;
+    margin-right: auto;
+  }
 }
 
 .weeklyIconContainer {
-  width: 4rem;
+  width: 4rem;;
   display: block;
-  overflow: hidden;
-  
+}
+
+@media (min-width:600px) {
+  .weeklyIcon {
+    width: 100%;
+    margin-right: auto;
+  }
 }
 
 .filterSVGweekly {
@@ -144,27 +237,32 @@
 #searchBtn {
   background: none;
   border: none;
-  border-top: none;
-  border-left: none;
-  border-right: none;
-  border-bottom: 2.5px solid black;
+  display: block;
+  margin-left: auto;
 }
 
 #searchInput {
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   font-size: 1rem;
   background: none;
-  border-top: none;
-  border-left: none;
-  border-right: none;
-  border-color: black;
+  border: none;
+  display: block;
+  flex-grow: 100;
+}
 
+#searchForm {
+  display: flex;
+  width: 70%;
+  border-bottom:1px solid #000;
+}
+
+textarea:focus, input:focus{
+  outline: none;
 }
 
 input::placeholder{
   color: #000000;
 }
-
 
 
 .toggle {
@@ -173,7 +271,7 @@ input::placeholder{
     padding: 8px 0 8px 33px;
     border-radius: 16px;
     background: radial-gradient(circle 12px, white 100%, transparent calc(100% + 1px)) #ccc -16px;
-    background-color: rgb(233, 120, 75);
+    background-color: purple;
     transition: 0.3s ease-in-out;
   }
   .toggle::before {
