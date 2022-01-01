@@ -39,7 +39,6 @@ async function parseWeatherData() {
     let domChanceOfRain = document.getElementsByClassName("rightDescription")[2];
     let domSunsetTime = document.getElementsByClassName("rightDescription")[3];
     let domPhaseOfMoon = document.getElementsByClassName("rightDescription")[4];
-    let domInput = document.getElementById("searchInput");
 
     let description = capitalize(weatherData.current.weather[0].description);
     let cityName = cityData[0].name;
@@ -85,34 +84,34 @@ async function parseWeatherData() {
 
 function getMoonPhase(number) {
         if ((number == 0) || (number == 1)) {
-            return "NewMoon";
+            return "New Moon";
         }
         else if (number < .25) {
-            return "WaxingCrescent";
+            return "Waxing Crescent";
         }
         else if (number == .25) {
-            return "FirstQuarter";
+            return "First Quarter";
         }
         else if ((number > .25) && (number < .5)) {
-            return "WaxingGibbous";
+            return "Waxing Gibbous";
         }
         else if (number == .5) {
-            return "FullMoon";
+            return "Full Moon";
         }
         else if ((number > .5) && (number < .75)) {
-            return "WaningGibbous";
+            return "Waning Gibbous";
         }
         else if (number == .75) {
-            return "LastQuarter";
+            return "Last Quarter";
         }
         else if ((number > .75) && (number < 1)) {
-            return "WaningCrescent";
+            return "Waning Crescent";
         }
 }
 
 function fillMoonPhaseIcon(phaseOfMoon) {
     let moonPhaseIcon = document.getElementById("moonPhaseIcon");
-    let moonPhase = getMoonPhase(phaseOfMoon);
+    let moonPhase = getMoonPhase(phaseOfMoon).replace(/\s+/g, '');
     
     moonPhaseIcon.src = "assets/" + moonPhase + ".png";
 }
