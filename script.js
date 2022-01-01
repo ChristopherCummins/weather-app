@@ -6,7 +6,7 @@ function readLocation() {
 
 async function getCityInfo(city) {
     let key = "459b582a130dd8242e0ba23f2fd860ea";
-    let url = "http://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=1&appid=" + key;
+    let url = "https://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=1&appid=" + key;
     const response = await fetch (url, {mode: "cors"});
     const cityData = await response.json();
     console.log(cityData);
