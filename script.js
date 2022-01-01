@@ -122,13 +122,13 @@ function fillCurrentForecastIcon(SVGString) {
     }
     let iconContainer = d3.select("#iconContainer");
     iconContainer.append("svg:image")
+    .attr('href', 'data:image/svg+xml;base64, ' + SVGString)
     .attr('class', 'filterSVG')
     .attr('id', 'mainIcon')
     .attr('width', 130)
     .attr('height', 130)
     // .attr('x', 5)
     .attr('y', 10)
-    .attr('href', 'data:image/svg+xml;base64, ' + SVGString)
 }
 
 function getForecastIconSVGString(currentForecastIcon) {
@@ -180,12 +180,12 @@ function fillWeeklyForecastIcons(weeklyIcons) {
     function addWeeklyIcon(d,i) {
         d3.select(this)
             .append("svg:image")
+            .attr('href', 'data:image/svg+xml;base64, ' + getForecastIconSVGString(weeklyIcons[i].weather[0].icon))
             .attr('class', 'filterSVGweekly')
             .attr('id', 'currentIcon')
             .attr('width', 40)
             .attr('height', 40)
             .attr('y', 15)
-            .attr('href', 'data:image/svg+xml;base64, ' + getForecastIconSVGString(weeklyIcons[i].weather[0].icon))
     }
     d3.selectAll("#currentIcon").remove();
 
