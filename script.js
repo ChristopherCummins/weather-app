@@ -85,28 +85,28 @@ async function parseWeatherData() {
 
 function getMoonPhase(number) {
         if ((number == 0) || (number == 1)) {
-            return "New Moon";
+            return "NewMoon";
         }
         else if (number < .25) {
-            return "Waxing Crescent";
+            return "WaxingCrescent";
         }
         else if (number == .25) {
-            return "First Quarter";
+            return "FirstQuarter";
         }
         else if ((number > .25) && (number < .5)) {
-            return "Waxing Gibbous";
+            return "WaxingGibbous";
         }
         else if (number == .5) {
-            return "Full Moon";
+            return "FullMoon";
         }
         else if ((number > .5) && (number < .75)) {
-            return "Waning Gibbous";
+            return "WaningGibbous";
         }
         else if (number == .75) {
-            return "Last Quarter";
+            return "LastQuarter";
         }
         else if ((number > .75) && (number < 1)) {
-            return "Waning Crescent";
+            return "WaningCrescent";
         }
 }
 
