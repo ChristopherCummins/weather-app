@@ -312,7 +312,7 @@ input::placeholder{
 
   html {
     background: linear-gradient(270deg, #a13d3d, #a13d99, #4d3da1, #3d78a1, #3da171);
-    background-size: 1000% 1000%;
+    background-size: auto;
 
     -webkit-animation: AnimationName 30s ease infinite;
     -moz-animation: AnimationName 30s ease infinite;
