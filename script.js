@@ -47,7 +47,7 @@ async function parseWeatherData() {
     let todaysHigh = Math.round(weatherData.daily[0].temp.max);
     let currentFeelsLike = Math.round(weatherData.current.feels_like);
     let currentHumidity = Math.round(weatherData.current.humidity);
-    let chanceOfRain = ((weatherData.daily[0].pop) * 100);
+    let chanceOfRain = Math.round(((weatherData.daily[0].pop) * 100));
     let sunsetTime = weatherData.current.sunset;
     let phaseOfMoon = (weatherData.daily[0].moon_phase);
     let currentDate = weatherData.current.dt;
@@ -123,7 +123,7 @@ function fillCurrentForecastIcon(SVGString) {
     let iconContainer = d3.select("#iconContainer");
     iconContainer.append("svg:image")
     .attr('href', 'data:image/svg+xml;base64, ' + SVGString)
-    .attr('class', 'filterSVG')
+    .style("filter", "brightness(0) saturate(100%) invert(0%) sepia(10%) saturate(7462%) hue-rotate(130deg) brightness(85%) contrast(108%)")
     .attr('id', 'mainIcon')
     .attr('width', 130)
     .attr('height', 130)
@@ -181,7 +181,7 @@ function fillWeeklyForecastIcons(weeklyIcons) {
         d3.select(this)
             .append("svg:image")
             .attr('href', 'data:image/svg+xml;base64, ' + getForecastIconSVGString(weeklyIcons[i].weather[0].icon))
-            .attr('class', 'filterSVGweekly')
+            .style("filter", "brightness(0) saturate(100%) invert(0%) sepia(10%) saturate(7462%) hue-rotate(130deg) brightness(85%) contrast(108%)")
             .attr('id', 'currentIcon')
             .attr('width', 40)
             .attr('height', 40)
