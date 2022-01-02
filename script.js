@@ -58,7 +58,12 @@ async function parseWeatherData() {
 
     domDescription.innerHTML = description;
     domCityName.innerHTML = cityName;
-    domCurrentTemp.innerHTML = currentTemp + "&#176;";
+    if (!converted) {
+        domCurrentTemp.innerHTML = currentTemp + "&#176;F";
+    }
+    else {
+        domCurrentTemp.innerHTML = currentTemp + "&#176;C";
+    }
     domTodaysLow.innerHTML = "Low: " + todaysLow + "&#176;";
     domTodaysHigh.innerHTML = "High: " + todaysHigh + "&#176;";
     domCurrentFeelsLike.innerHTML = currentFeelsLike + "&#176;";
