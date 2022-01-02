@@ -128,7 +128,7 @@ function fillCurrentForecastIcon(SVGString) {
     let iconContainer = d3.select("#iconContainer");
     iconContainer.append("svg:image")
     .attr('href', 'data:image/svg+xml;base64, ' + SVGString)
-    .style("filter", "brightness(0) saturate(100%) invert(0%) sepia(10%) saturate(7462%) hue-rotate(130deg) brightness(85%) contrast(108%)")
+    //.style("filter", "brightness(0) saturate(100%) invert(0%) sepia(10%) saturate(7462%) hue-rotate(130deg) brightness(85%) contrast(108%)")
     .attr('id', 'mainIcon')
     .attr('width', 130)
     .attr('height', 130)
@@ -186,7 +186,7 @@ function fillWeeklyForecastIcons(weeklyIcons) {
         d3.select(this)
             .append("svg:image")
             .attr('href', 'data:image/svg+xml;base64, ' + getForecastIconSVGString(weeklyIcons[i].weather[0].icon))
-            .style("filter", "brightness(0) saturate(100%) invert(0%) sepia(10%) saturate(7462%) hue-rotate(130deg) brightness(85%) contrast(108%)")
+            //.style("filter", "brightness(0) saturate(100%) invert(0%) sepia(10%) saturate(7462%) hue-rotate(130deg) brightness(85%) contrast(108%)")
             .attr('id', 'currentIcon')
             .attr('width', 40)
             .attr('height', 40)

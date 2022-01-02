@@ -5,6 +5,7 @@ body {
   width: auto;
   max-width: auto;
   overflow-x: hidden;
+  color: white;
 }
 
 .topContainer {
@@ -30,18 +31,21 @@ body {
 .cityName {
   font-size: 30px;
   margin-bottom: .5rem;
+  color: white;
 }
 
 .temperature {
   font-size: 45px;
   padding-top: 1.5%;
   padding-bottom: 1.5%;
+  color: white;
 }
 
 
 .descriptionText {
   font-size: 40px;
   padding-bottom: 1.5%;
+  color: white;
 }
 
 .highLowBox {
@@ -52,15 +56,18 @@ body {
 
 .todaysLow {
   font-size: 19px;
+  color: white;
 }
 
 .todaysHigh {
   margin-left: 2%;
   font-size: 19px;
+  color: white;
 }
 
 #searchInput {
   max-width: 60%;
+  color: white;
 }
 
 .rightDescriptionBox {
@@ -95,10 +102,10 @@ body {
   padding-right: 2%;
 }
 
-.filterSVG {
+/* .filterSVG {
   -webkit-filter: brightness(0) saturate(100%) invert(0%) sepia(10%) saturate(7462%) hue-rotate(130deg) brightness(85%) contrast(108%);
   filter: brightness(0) saturate(100%) invert(0%) sepia(10%) saturate(7462%) hue-rotate(130deg) brightness(85%) contrast(108%);
-}
+} */
 
 .upperRightBox {
   display: flex;
@@ -126,7 +133,7 @@ body {
 }
 
 hr {
-  border: 1px solid black;
+  border: 1px solid white;
   width: auto;
 }
 
@@ -172,6 +179,7 @@ hr {
   font-weight: 500;
   margin-right: auto;
   display: block;
+  color: white;
 }
 
 @media (min-width:600px) {
@@ -203,12 +211,14 @@ hr {
   margin-top: 1rem;
   display: block;
   margin-left: auto;
+  color: white;
 }
 
 .low {
   font-size: 1.3rem;
   display: block;
   margin-left: auto;
+  color: white;
 }
 
 @media (min-width:600px) {
@@ -238,10 +248,10 @@ hr {
   }
 }
 
-.filterSVGweekly {
+/* .filterSVGweekly {
   -webkit-filter: brightness(0) saturate(100%) invert(0%) sepia(10%) saturate(7462%) hue-rotate(130deg) brightness(85%) contrast(108%);
   filter: brightness(0) saturate(100%) invert(0%) sepia(10%) saturate(7462%) hue-rotate(130deg) brightness(85%) contrast(108%);
-}
+} */
 
 #searchBtn {
   background: none;
@@ -257,12 +267,17 @@ hr {
   border: none;
   display: block;
   flex-grow: 100;
+  color: white;
+}
+
+.searchSVG {
+  filter: brightness(0) invert(1);
 }
 
 #searchForm {
   display: flex;
   width: 70%;
-  border-bottom:1px solid #000;
+  border-bottom:1px solid rgb(255, 255, 255);
 }
 
 textarea:focus, input:focus{
@@ -270,18 +285,19 @@ textarea:focus, input:focus{
 }
 
 input::placeholder{
-  color: #000000;
+  color: #ffffff;
 }
 
 
 .unitButton {
   background: none;
-  border: 2px solid #000000;
+  border: 2px solid #ffffff;
   text-align: center;
   width: 100px;
   text-decoration: none;
   display: inline-block;
   font-size: 14px;
+  color: white;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
@@ -291,11 +307,12 @@ input::placeholder{
 }
 
   html {
-    background: linear-gradient(270deg, #77baa9, #9cb6e7, #eda3a3, #e0e0e0);
-    background-size: 800% 800%;
+    background: linear-gradient(270deg, #a13d3d, #a13d99, #4d3da1, #3d78a1, #3da171);
+    background-size: 1000% 1000%;
 
     -webkit-animation: AnimationName 30s ease infinite;
     -moz-animation: AnimationName 30s ease infinite;
+    -o-animation: AnimationName 30s ease infinite;
     animation: AnimationName 30s ease infinite;
 }
 
@@ -305,6 +322,11 @@ input::placeholder{
     100%{background-position:0% 50%}
 }
 @-moz-keyframes AnimationName {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@-o-keyframes AnimationName {
     0%{background-position:0% 50%}
     50%{background-position:100% 50%}
     100%{background-position:0% 50%}
