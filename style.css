@@ -1,10 +1,14 @@
+html {
+  width: 100%;
+  overflow-x: hidden;
+}
+
 body {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   width: auto;
   max-width: auto;
-  overflow-x: hidden;
   color: white;
 }
 
@@ -20,7 +24,7 @@ body {
   flex-direction: column;
   margin-left: 1.5%;
   align-items: left;
-  width: 50%;
+  width: 45%;
 }
 
 .descriptionText, .cityName, .temperature, .todaysHigh, .todaysLow, #searchInput, .rightHeading, .rightDescription,
