@@ -294,7 +294,7 @@ function capitalize(words) {
 
     domDescription.innerHTML = description;
     domCityName.innerHTML = cityName;
-    domCurrentTemp.innerHTML = currentTemp + "&#176;";
+    domCurrentTemp.innerHTML = currentTemp + "&#176;F";
     domTodaysLow.innerHTML = "Low: " + todaysLow + "&#176;";
     domTodaysHigh.innerHTML = "High: " + todaysHigh + "&#176;";
     domCurrentFeelsLike.innerHTML = currentFeelsLike + "&#176;";
@@ -319,6 +319,7 @@ function changeDomUnits() {
     let allTemps = document.getElementsByClassName("temp");
     let mainLowTemp = document.getElementsByClassName("todaysLow")[0];
     let mainHighTemp = document.getElementsByClassName("todaysHigh")[0];
+    let mainCurrentTemp = document.getElementsByClassName("temperature")[0];
 
     for (i = 0; i < allTemps.length; i ++) {
         let originalTemp = allTemps[i].innerHTML.replace(/[^0-9.-]/g, '');
@@ -331,10 +332,18 @@ function changeDomUnits() {
             allTemps[i].innerHTML= newTemp + "&#176;";
         }
     }
+    currentTemp = mainCurrentTemp.innerHTML;
     lowTemp = mainLowTemp.innerHTML;
     mainLowTemp.innerHTML = "Low: " + lowTemp;
     highTemp = mainHighTemp.innerHTML;
-    mainHighTemp.innerHTML = "Low: " + highTemp;
+    mainHighTemp.innerHTML = "High: " + highTemp;
+
+    if (converted) {
+        mainCurrentTemp.innerHTML = currentTemp + "F";
+    }
+    else {
+        mainCurrentTemp.innerHTML = currentTemp + "C";
+    }
 }
 
 function convertMetricToImperial(temp) {
@@ -347,16 +356,20 @@ function convertImperialToMetric(temp) {
     return temp;
 }
 
-let checkbox = document.querySelector("input[type='checkbox']");
+let convertButton = document.getElementById("unitBtn");
 let converted = false;
 
-checkbox.addEventListener("click", () => {
+convertButton.addEventListener("click", () => {
         changeDomUnits();
         if (! converted) {
             converted = true;
+            convertButton.innerHTML = "Convert to &#176;F"
         }
         else {
             converted = false;
+            convertButton.innerHTML = "Convert to &#176;C"
         }
         console.log("hi");
     });
+
+    

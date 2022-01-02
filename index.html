@@ -7,18 +7,18 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="reset.css">
     <title>Christopher's Weather App</title>
+    <link rel = "icon" type= "image/svg" href="assets/02d.svg" />
 </head>
 <body>
     <div class = "topContainer">
         <div class = "leftDescriptionBox">
-            <div class = "descriptionText">Overcast Clouds</div>
             <div class = "cityName">New York</div>
             <div class = "temperature temp">51&#176;</div>
             <div class = "highLowBox">
                 <div class = "todaysLow temp">Low: 48&#176;</div>
                 <div class = "todaysHigh temp">High: 53&#176;</div>
             </div>
-            <input type="checkbox" name = "checkbox" class = "toggle">
+            <div class = "descriptionText">Overcast Clouds</div>
             <div class = "todayMainIconContainer">
                 <svg class = "rightIcon" id = "iconContainer"></svg>
             </div>
@@ -30,6 +30,7 @@
             </div>
         </div>
         <div class = "rightDescriptionBox">
+            <div class = "upperRightBox">
             <div class = "rightCategory">
                 <div class = "rightIcon"><img src = "assets/thermo.svg" class = "filterSVG" height = "35" width = "35"/> </div>
                 <div class = "rightInnerBox">
@@ -65,6 +66,10 @@
                     <div class = "rightDescription">New Moon</div>
                 </div>
             </div>
+			</div>
+			<div class = buttonHolder>
+				<button type="button" id = "unitBtn" class = "unitButton">Convert to &#176;C </button>
+			</div>
         </div>
     </div>
     <div class = "bottomContainer">
